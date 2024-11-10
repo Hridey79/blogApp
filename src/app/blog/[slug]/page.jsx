@@ -19,7 +19,6 @@ export const generateMetadata = async ({ params }) => {
   const { slug } = params;
 
   const post = await getPost(slug);
-
   return {
     title: post.title,
     description: post.desc,
@@ -31,7 +30,7 @@ const SinglePostPage = async ({ params }) => {
 
   // FETCH DATA WITH AN API
   // const post = await getData(slug);
-
+  // console.log(post.title)
   // FETCH DATA WITHOUT AN API
   const post = await getPost(slug);
 
@@ -53,7 +52,7 @@ const SinglePostPage = async ({ params }) => {
           <div className={styles.detailText}>
             <span className={styles.detailTitle}>Published</span>
             <span className={styles.detailValue}>
-              {/* {post.createdAt.toString().slice(4, 16)} */}
+              {post.createdAt.toString().slice(4, 16)}
             </span>
           </div>
         </div>
