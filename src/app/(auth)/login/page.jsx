@@ -1,5 +1,5 @@
 import LoginForm from "@/components/loginForm/loginForm";
-import { handleGithubLogin } from "@/lib/action";
+// import { handleGithubLogin } from "@/lib/action";
 import styles from "./login.module.css";
 
 const LoginPage = () => {
@@ -7,9 +7,10 @@ const LoginPage = () => {
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        <form action={handleGithubLogin}>
+        {/* giving error during production */}
+        {/* <form action={handleGithubLogin}>
           <button className={styles.github}>Login with Github</button>
-        </form>
+        </form> */}
         <LoginForm />
       </div>
     </div>
