@@ -28,19 +28,23 @@ export const authConfig = {
       // ONLY ADMIN CAN REACH THE ADMIN DASHBOARD
 
       if (isOnAdminPanel && !user?.isAdmin) {
+        console.log(request.nextUrl)
         return false;
       }
 
       // ONLY AUTHENTICATED USERS CAN REACH THE BLOG PAGE
 
       if (isOnBlogPage && !user) {
-        return false;
+        console.log(request.nextUrl)
+        return Response.redirect(new URL("/login", "https://blog-app-five-delta-85.vercel.app"))
+        // return false;
       }
 
       // ONLY UNAUTHENTICATED USERS CAN REACH THE LOGIN PAGE
 
       if (isOnLoginPage && user) {
-        return Response.redirect(new URL("/", request.nextUrl));
+        console.log(request.nextUrl)
+        return Response.redirect(new URL("/", "https://blog-app-five-delta-85.vercel.app"));
       }
 
       return true
