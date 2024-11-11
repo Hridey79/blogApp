@@ -19,12 +19,18 @@ export const generateMetadata = async ({ params }) => {
   const { slug } = params;
 
   const post = await getPost(slug);
+  const title=post.title;
+  const description=post.desc;
   return {
-    title: post.title,
-    description: post.desc,
+    title,
+    description,
     openGraph:{
-      title:post.title,
-      description:post.desc
+      title,
+      description
+    },
+    twitter:{
+      title,
+      description
     }
   };
 };
