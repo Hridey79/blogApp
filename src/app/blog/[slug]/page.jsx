@@ -31,8 +31,7 @@ export const generateMetadata = async ({ params }) => {
     twitter:{
       title,
       description
-    },
-    metadataBase: new URL('https://blog-app-five-delta-85.vercel.app/')
+    }
   };
 };
 
