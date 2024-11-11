@@ -6,10 +6,11 @@ import Footer from "@/components/footer/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: {
-    default:"Next.js 14 Homepage",
-    template:"%s | Next.js 14"
-  },
+  // title: {
+  //   default:"Next.js 14 Homepage",
+  //   template:"%s | Next.js 14"
+  // },
+  title:"Homepage",
   description: "Rocket Blogs app description",
 };
 
