@@ -10,8 +10,8 @@ export const metadata = {
   //   default:"Next.js 14 Homepage",
   //   template:"%s | Next.js 14"
   // },
-  title:"Homepage",
-  description: "Rocket Blogs app description",
+  // title:"Homepage",
+  // description: "Rocket Blogs app description",
 };
 
 export default function RootLayout({ children }) {
