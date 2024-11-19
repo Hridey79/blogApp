@@ -2,6 +2,7 @@ import PostCard from "@/components/postCard/postCard";
 import styles from "./blog.module.css";
 import { getPosts } from "@/lib/data";
 
+
 // FETCH DATA WITH AN API
 const getData = async () => {
   const res = await fetch("https://blog-app-five-delta-85.vercel.app/api/blog", {next:{revalidate:3600}});
@@ -11,6 +12,11 @@ const getData = async () => {
   }
 
   return res.json();
+};
+
+export const metadata = {
+  title: "Blog Page",
+  description: "Blog description",
 };
 
 const BlogPage = async () => {
