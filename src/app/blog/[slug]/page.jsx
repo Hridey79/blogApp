@@ -15,59 +15,30 @@ import { getPost } from "@/lib/data";
 //   return res.json();
 // };
 
-// export const generateMetadata = async ({ params }) => {
-//   const { slug } = params;
-
-//   const post = await getPost(slug);
-//   const title=post.title;
-//   const description=post.desc;
-//   return {
-//     title,
-//     description,
-//     openGraph:{
-//       title,
-//       description
-//     },
-//     twitter:{
-//       title,
-//       description
-//     }
-//   };
-// };
 export const generateMetadata = async ({ params }) => {
   const { slug } = params;
-  const post = await getPost(slug);
-  const title = post.title;
-  const description = post.desc;
-  const image = post.img; // URL to the blog's image
-  const url = `https://blog-app-five-delta-85.vercel.app/${slug}`; // Update with your domain
 
+  const post = await getPost(slug);
+  const title=post.title;
+  const description=post.desc;
   return {
     title,
     description,
-    openGraph: {
+    openGraph:{
       title,
-      description,
-      url,
-      images: [
-        {
-          url: image,
-          width: 800,
-          height: 600,
-          alt: title,
-        },
-      ],
-      type: "article",
+      description
     },
-    twitter: {
-      card: "summary_large_image",
+    twitter:{
       title,
-      description,
-      images: [image],
-    },
+      description
+    }
   };
 };
 
+export async function getServerSideProps({ params }) {
+  const post = await getPost(params.slug);
+  return { props: { post } };
+}
 
 const SinglePostPage = async ({ params }) => {
   const { slug } = params;
