@@ -15,30 +15,30 @@ import { getPost } from "@/lib/data";
 //   return res.json();
 // };
 
-export const generateMetadata = async ({ params }) => {
-  const { slug } = params;
+// export const generateMetadata = async ({ params }) => {
+//   const { slug } = params;
 
-  const post = await getPost(slug);
-  const title=post.title;
-  const description=post.desc;
-  return {
-    title,
-    description,
-    openGraph:{
-      title,
-      description
-    },
-    twitter:{
-      title,
-      description
-    }
-  };
-};
+//   const post = await getPost(slug);
+//   const title=post.title;
+//   const description=post.desc;
+//   return {
+//     title,
+//     description,
+//     openGraph:{
+//       title,
+//       description
+//     },
+//     twitter:{
+//       title,
+//       description
+//     }
+//   };
+// };
 
-// export async function getServerSideProps({ params }) {
-//   const post = await getPost(params.slug);
-//   return { props: { post } };
-// }
+export async function getServerSideProps({ params }) {
+  const post = await getPost(params.slug);
+  return { props: { post } };
+}
 
 const SinglePostPage = async ({ params }) => {
   const { slug } = params;
