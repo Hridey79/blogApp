@@ -35,10 +35,10 @@ export const generateMetadata = async ({ params }) => {
   };
 };
 
-export async function getServerSideProps({ params }) {
-  const post = await getPost(params.slug);
-  return { props: { post } };
-}
+// export async function getServerSideProps({ params }) {
+//   const post = await getPost(params.slug);
+//   return { props: { post } };
+// }
 
 const SinglePostPage = async ({ params }) => {
   const { slug } = params;
