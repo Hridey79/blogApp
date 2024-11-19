@@ -14,6 +14,7 @@ export const metadata = {
   description: "Rocket Blogs app description",
 };
 
+// export const metadata=constructMetadata()
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
