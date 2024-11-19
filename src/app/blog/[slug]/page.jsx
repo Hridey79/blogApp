@@ -72,6 +72,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
+generateMetadata()
 
 const SinglePostPage = async ({ params }) => {
   const { slug } = params;
@@ -84,10 +85,10 @@ const SinglePostPage = async ({ params }) => {
 
   return (
     <div className={styles.container}>
-      <title>{post.title}</title>
+      {/* <title>{post.title}</title>
       <meta name="description" content={post.desc}></meta>
       <meta property="og:image" content={post.img}></meta>
-      <meta property="og:title" content={post.title}></meta>
+      <meta property="og:title" content={post.title}></meta> */}
       {post.img && (
         <div className={styles.imgContainer}>
           <Image src={post.img} alt="" fill className={styles.img} />
