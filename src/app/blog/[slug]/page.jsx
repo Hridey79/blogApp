@@ -46,7 +46,7 @@ export async function generateMetadata({ params }) {
 
   // Fetch the post data
   const post = await getPost(slug);
-
+  console.log(post)
   return {
     title: post.title || "Default Title",
     description: post.desc || "Default Description",
