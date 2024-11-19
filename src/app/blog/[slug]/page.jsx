@@ -3,6 +3,7 @@ import styles from "./singlePost.module.css";
 import PostUser from "@/components/postUser/postUser";
 import { Suspense } from "react";
 import { getPost } from "@/lib/data";
+import Head from "next/head";
 
 // FETCH DATA WITH AN API
 // const getData = async (slug) => {
@@ -84,7 +85,7 @@ const SinglePostPage = async ({ params }) => {
 
   return (
     <>
-    {/* <Head>
+    <Head>
         <title>{post.title}</title>
         <meta name="description" content={post.desc} />
         <meta property="og:title" content={post.title} />
@@ -95,7 +96,7 @@ const SinglePostPage = async ({ params }) => {
         <meta property="twitter:title" content={post.title} />
         <meta property="twitter:description" content={post.desc} />
         <meta property="twitter:image" content={post.img} />
-    </Head> */}
+    </Head>
     <div className={styles.container}>
       {/* <title>{post.title}</title>
       <meta name="description" content={post.desc}></meta>
