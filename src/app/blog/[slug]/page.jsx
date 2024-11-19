@@ -46,10 +46,11 @@ export async function generateMetadata({ params }) {
 
   // Fetch the post data
   const post = await getPost(slug);
-  console.log(post)
+  //console.log(post)
   return {
     title: post.title || "Default Title",
     description: post.desc || "Default Description",
+    metadataBase: new URL("https://blog-app-five-delta-85.vercel.app"),
     openGraph: {
       title: post.title,
       description: post.desc,
