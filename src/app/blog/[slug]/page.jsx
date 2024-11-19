@@ -41,37 +41,37 @@ import Head from "next/head";
 // //   const post = await getPost(params.slug);
 // //   return { props: { post } };
 // }
-export async function generateMetadata({ params }) {
-  const { slug } = params;
+// export async function generateMetadata({ params }) {
+//   const { slug } = params;
 
-  // Fetch the post data
-  const post = await getPost(slug);
+//   // Fetch the post data
+//   const post = await getPost(slug);
 
-  return {
-    title: post.title || "Default Title",
-    description: post.desc || "Default Description",
-    openGraph: {
-      title: post.title,
-      description: post.desc,
-      url: `https://blog-app-five-delta-85.vercel.app/blog/${slug}`,
-      images: [
-        {
-          url: post.img,
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
-      type: "article",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description: post.desc,
-      images: [post.img],
-    },
-  };
-}
+//   return {
+//     title: post.title || "Default Title",
+//     description: post.desc || "Default Description",
+//     openGraph: {
+//       title: post.title,
+//       description: post.desc,
+//       url: `https://blog-app-five-delta-85.vercel.app/blog/${slug}`,
+//       images: [
+//         {
+//           url: post.img,
+//           width: 1200,
+//           height: 630,
+//           alt: post.title,
+//         },
+//       ],
+//       type: "article",
+//     },
+//     twitter: {
+//       card: "summary_large_image",
+//       title: post.title,
+//       description: post.desc,
+//       images: [post.img],
+//     },
+//   };
+// }
 
 
 const SinglePostPage = async ({ params }) => {
@@ -96,7 +96,7 @@ const SinglePostPage = async ({ params }) => {
         <meta property="twitter:title" content={post.title} />
         <meta property="twitter:description" content={post.desc} />
         <meta property="twitter:image" content={post.img} />
-      </Head>
+    </Head>
     <div className={styles.container}>
       {/* <title>{post.title}</title>
       <meta name="description" content={post.desc}></meta>
