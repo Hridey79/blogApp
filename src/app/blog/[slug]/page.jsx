@@ -72,7 +72,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
-generateMetadata()
+// generateMetadata()
 
 const SinglePostPage = async ({ params }) => {
   const { slug } = params;
