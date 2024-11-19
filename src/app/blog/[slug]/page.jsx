@@ -3,6 +3,7 @@ import styles from "./singlePost.module.css";
 import PostUser from "@/components/postUser/postUser";
 import { Suspense } from "react";
 import { getPost } from "@/lib/data";
+import Head from "next/head";
 
 // FETCH DATA WITH AN API
 // const getData = async (slug) => {
@@ -72,7 +73,6 @@ export async function generateMetadata({ params }) {
   };
 }
 
-// generateMetadata()
 
 const SinglePostPage = async ({ params }) => {
   const { slug } = params;
@@ -84,6 +84,19 @@ const SinglePostPage = async ({ params }) => {
   const post = await getPost(slug);
 
   return (
+    <>
+    <Head>
+        <title>{post.title}</title>
+        <meta name="description" content={post.desc} />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.desc} />
+        <meta property="og:url" content={`https://blog-app-five-delta-85.vercel.app/blog/${slug}`} />
+        <meta property="og:image" content={post.img} />
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:title" content={post.title} />
+        <meta property="twitter:description" content={post.desc} />
+        <meta property="twitter:image" content={post.img} />
+      </Head>
     <div className={styles.container}>
       {/* <title>{post.title}</title>
       <meta name="description" content={post.desc}></meta>
@@ -112,6 +125,7 @@ const SinglePostPage = async ({ params }) => {
         <div className={styles.content}>{post.desc}</div>
       </div>
     </div>
+    </>
   );
 };
 
