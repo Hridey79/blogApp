@@ -1,6 +1,7 @@
 import { Post, User } from "./models";
 import { connectToDb } from "./utils";
 import { unstable_noStore as noStore } from "next/cache";
+import { constructMetadata } from "./utils";
 
 // TEMPORARY DATA
 // const users = [
@@ -30,7 +31,15 @@ export const getPost = async (slug) => {
   try {
     connectToDb();
     const post = await Post.findOne({ slug });
-    return post;
+    const metadataParams = {
+          title: post.title,
+          description: post.desc,
+          image: post.img,
+          noIndex: false,
+          icons: { icon: "/favicon.ico", apple: "/apple-touch-icon.png" },
+        };
+      const obj=constructMetadata({ params: metadataParams });
+      return {post,obj};
   } catch (err) {
     console.log(err);
     throw new Error("Failed to fetch post!");
