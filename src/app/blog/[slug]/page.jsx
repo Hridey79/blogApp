@@ -3,7 +3,7 @@ import styles from "./singlePost.module.css";
 import PostUser from "@/components/postUser/postUser";
 import { Suspense } from "react";
 import { getPost } from "@/lib/data";
-import { constructMetadata } from "@/lib/utils";
+import Head from "next/head";
 
 // FETCH DATA WITH AN API
 // const getData = async (slug) => {
@@ -92,15 +92,26 @@ export async function generateMetadata({ params }) {
 //   return constructMetadata({ params: metadataParams });
 // }
 
+export async function getServerSideProps({context}) {
+  const {slug}=context.params
+  // Fetch data from external API
+  const post = await getPost(slug);
+  // const res = await fetch('https://api.github.com/repos/vercel/next.js')
+  // const repo = await res.json()
+  // Pass data to the page via props
+  return { props: { post } }
+}
 
-const SinglePostPage = async ({ params }) => {
-  const { slug } = params;
+const SinglePostPage = async (post) => {
+  //const { slug } = post;
+  console.log(post)
 
   // FETCH DATA WITH AN API
   // const post = await getData(slug);
   // console.log(post.title)
   // FETCH DATA WITHOUT AN API
-  const post = await getPost(slug);
+  // const post = await getPost(slug);
+
 
   return (
     <>
