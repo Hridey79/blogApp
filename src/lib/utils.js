@@ -23,8 +23,8 @@ export function constructMetadata({params} = {}){
     title,
     description,
     openGraph: {
-      title,
-      description,
+      // title,
+      // description,
       images: [
         {
           url: image
@@ -33,8 +33,8 @@ export function constructMetadata({params} = {}){
     },
     twitter: {
       card: "summary_large_image",
-      title,
-      description,
+      // title,
+      // description,
       images: [image]
     },
     icons,
