@@ -92,26 +92,15 @@ export async function generateMetadata({ params }) {
 //   return constructMetadata({ params: metadataParams });
 // }
 
-export async function getServerSideProps({context}) {
-  const {slug}=context.params
-  // Fetch data from external API
-  const post = await getPost(slug);
-  // const res = await fetch('https://api.github.com/repos/vercel/next.js')
-  // const repo = await res.json()
-  // Pass data to the page via props
-  return { props: { post } }
-}
 
-const SinglePostPage = async (post) => {
-  //const { slug } = post;
-  console.log(post)
+const SinglePostPage = async ({ params }) => {
+  const { slug } = params;
 
   // FETCH DATA WITH AN API
   // const post = await getData(slug);
   // console.log(post.title)
   // FETCH DATA WITHOUT AN API
-  // const post = await getPost(slug);
-
+  const post = await getPost(slug);
 
   return (
     <>
@@ -127,6 +116,10 @@ const SinglePostPage = async (post) => {
         <meta property="twitter:description" content={post.desc} />
         <meta property="twitter:image" content={post.img} />
     </Head> */}
+    <Head>
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.desc} />
+      </Head>
     <div className={styles.container}>
       {/* <title>{post.title}</title>
       <meta name="description" content={post.desc}></meta>
