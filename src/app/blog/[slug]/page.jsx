@@ -47,7 +47,7 @@ export async function generateMetadata({ params }) {
   // Fetch the post data
   const post = await getPost(slug);
   //console.log(post)
-  return {
+  const metadata= {
     title: post.title || "Default Title",
     description: post.desc || "Default Description",
     metadataBase: new URL("https://blog-app-five-delta-85.vercel.app"),
@@ -72,6 +72,8 @@ export async function generateMetadata({ params }) {
       images: [post.img],
     },
   };
+  console.log(metadata)
+  return metadata
 }
 // export async function generateMetadata({ params }) {
 //   // Simulate fetching post data based on the slug
