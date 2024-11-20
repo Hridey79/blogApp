@@ -34,11 +34,11 @@ export const authConfig = {
 
       // ONLY AUTHENTICATED USERS CAN REACH THE BLOG PAGE
 
-      if (isOnBlogPage && !user) {
-        console.log(request.nextUrl)
-        return Response.redirect(new URL("/login", "https://blog-app-five-delta-85.vercel.app"))
-        // return false;
-      }
+      // if (isOnBlogPage && !user) {
+      //   console.log(request.nextUrl)
+      //   return Response.redirect(new URL("/login", "https://blog-app-five-delta-85.vercel.app"))
+      //   // return false;
+      // }
 
       // ONLY UNAUTHENTICATED USERS CAN REACH THE LOGIN PAGE
 
