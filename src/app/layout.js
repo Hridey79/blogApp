@@ -14,14 +14,14 @@ const inter = Inter({ subsets: ["latin"] });
 //   // title:"Homepage",
 //   description: "Rocket Blogs app description",
 // };
-// const metadataParams = {
-//   title: "Rocket Blogs Homepage",
-//   description: "Rocket Blogs app description",
-//   image: "post.img",
-//   noIndex: false,
-//   icons: { icon: "/favicon.ico", apple: "/apple-touch-icon.png" },
-// };
-// export const metadata=constructMetadata({params:metadataParams})
+const metadataParams = {
+  title: "Rocket Blogs Homepage",
+  description: "Rocket Blogs app description",
+  image: "post.img",
+  noIndex: false,
+  icons: { icon: "/favicon.ico", apple: "/apple-touch-icon.png" },
+};
+export const metadata=constructMetadata({params:metadataParams})
 // export const metadata=constructMetadata()
 export default function RootLayout({ children }) {
   return (
