@@ -17,6 +17,7 @@ export const connectToDb = async () => {
 };
 
 export function constructMetadata({params} = {}){
+  // console.log(params)
   const {title,description,image,noIndex,icons}=params
   return {
     title,

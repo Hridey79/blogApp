@@ -3,7 +3,7 @@ import styles from "./singlePost.module.css";
 import PostUser from "@/components/postUser/postUser";
 import { Suspense } from "react";
 import { getPost } from "@/lib/data";
-import Head from "next/head";
+import { constructMetadata } from "@/lib/utils";
 
 // FETCH DATA WITH AN API
 // const getData = async (slug) => {
@@ -41,37 +41,53 @@ import Head from "next/head";
 // //   const post = await getPost(params.slug);
 // //   return { props: { post } };
 // }
-export async function generateMetadata({ params }) {
-  const { slug } = params;
+// export async function generateMetadata({ params }) {
+//   const { slug } = params;
 
-  // Fetch the post data
-  const post = await getPost(slug);
-  //console.log(post)
-  return {
-    title: post.title || "Default Title",
-    description: post.desc || "Default Description",
-    metadataBase: new URL("https://blog-app-five-delta-85.vercel.app"),
-    openGraph: {
-      title: post.title,
-      description: post.desc,
-      url: `https://blog-app-five-delta-85.vercel.app/blog/${slug}`,
-      images: [
-        {
-          url: post.img,
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
-      type: "article",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description: post.desc,
-      images: [post.img],
-    },
+//   // Fetch the post data
+//   const post = await getPost(slug);
+//   //console.log(post)
+//   return {
+//     title: post.title || "Default Title",
+//     description: post.desc || "Default Description",
+//     metadataBase: new URL("https://blog-app-five-delta-85.vercel.app"),
+//     openGraph: {
+//       title: post.title,
+//       description: post.desc,
+//       url: `https://blog-app-five-delta-85.vercel.app/blog/${slug}`,
+//       images: [
+//         {
+//           url: post.img,
+//           width: 1200,
+//           height: 630,
+//           alt: post.title,
+//         },
+//       ],
+//       type: "article",
+//     },
+//     twitter: {
+//       card: "summary_large_image",
+//       title: post.title,
+//       description: post.desc,
+//       images: [post.img],
+//     },
+//   };
+// }
+export async function generateMetadata({ params }) {
+  // Simulate fetching post data based on the slug
+  const slug = params.slug;
+  const post = await getPost(slug); // Replace this with your actual fetching function
+
+  // Define parameters for metadata
+  const metadataParams = {
+    title: post.title,
+    description: post.desc,
+    image: post.img,
+    noIndex: false,
+    icons: { icon: "/favicon.ico", apple: "/apple-touch-icon.png" },
   };
+
+  return constructMetadata({ params: metadataParams });
 }
 
 
@@ -86,7 +102,7 @@ const SinglePostPage = async ({ params }) => {
 
   return (
     <>
-    <Head>
+    {/* <Head>
         <title>{post.title}</title>
         <meta name="description" content={post.desc} />
         <meta property="og:title" content={post.title} />
@@ -97,7 +113,7 @@ const SinglePostPage = async ({ params }) => {
         <meta property="twitter:title" content={post.title} />
         <meta property="twitter:description" content={post.desc} />
         <meta property="twitter:image" content={post.img} />
-    </Head>
+    </Head> */}
     <div className={styles.container}>
       {/* <title>{post.title}</title>
       <meta name="description" content={post.desc}></meta>
