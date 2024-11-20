@@ -65,8 +65,7 @@ export const getPost = async (slug) => {
   try {
     connectToDb();
     const post = await Post.findOne({ slug });
-    const meta=generateMetadata({slug});
-    return {post,meta};
+    return post;
   } catch (err) {
     console.log(err);
     throw new Error("Failed to fetch post!");
